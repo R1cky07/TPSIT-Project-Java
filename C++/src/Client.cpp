@@ -1,48 +1,57 @@
 #include "Client.h"
-#include <iostream>
 
-Client::Client(std::string n) : name(n) {}
+Client::Client(string n) : name(n), nonBankFunds(0), monthsPassed(0) {}
 
 void Client::depositMoney(double amount) {
-    account.deposit(amount);
+  if (amount > nonBankFunds) {
+    cout << "Insufficient Balance";
+    return;
+  }
+  account.deposit(amount);
+  nonBankFunds -= amount;
 }
 
 void Client::withdrawMoney(double amount) {
-    if (!account.withdraw(amount)) {
-        std::cout << "Insufficient balance." << std::endl;
-    }
+  if (!account.withdraw(amount)) {
+    cout << "Insufficient balance." << endl;
+  }
 }
 
-double Client::getAccountBalance() {
-    return account.getBalance();
-}
+double Client::getAccountBalance() { return account.getBalance(); }
 
 void Client::displayPortfolio() {
-    std::cout << "Investment Portfolio:" << std::endl;
-    if (portfolio.empty()) {
-        std::cout << "No investments yet." << std::endl;
-    } else {
-        for (auto &investment : portfolio) {
-            std::cout << investment.type << ", " << investment.amount << "€, duration "
-                     << investment.duration << " months, risk: " << investment.risk
-                     << ", return: " << investment.returnRate * 100 << "%" << std::endl;
-        }
+  if (portfolio.empty()) {
+    cout << "No investments yet." << endl;
+  } else {
+    for (auto &investment : portfolio) {
+      cout << investment.type << ", " << investment.amount << "$, duration "
+           << investment.duration << " months, risk: " << investment.risk
+           << ", return: " << investment.returnRate * 100 << "%" << endl;
     }
+  }
+  cout << "Portfolio: " << nonBankFunds << "$" << endl;
 }
 
 void Client::addInvestment(Investment investment) {
-    portfolio.push_back(investment);
+  if (account.hasDebt()) {
+    cout << "Cannot invest with outstanding debt." << endl;
+    return;
+  }
+  portfolio.push_back(investment);
 }
 
 void Client::advanceTime() {
-
-    for (auto &investment : portfolio) {
-        if (investment.duration > 0) {
-            investment.duration--;
-            if (investment.duration == 0) {
-                std::cout << "The " << investment.type << " investment has matured!" << std::endl;
-                account.deposit(investment.executeInvestment());
-            }
-        }
+  monthsPassed++;
+  nonBankFunds += 100;
+  for (auto &investment : portfolio) {
+    if (investment.duration > 0) {
+      investment.duration--;
+      if (investment.duration == 0) {
+        cout << "The " << investment.type << " investment has matured!" << endl;
+        account.deposit(investment.executeInvestment());
+      }
     }
+  }
 }
+
+double Client::getNonBankFunds() const { return nonBankFunds; }

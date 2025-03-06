@@ -1,18 +1,20 @@
 #ifndef INVESTMENT_H
 #define INVESTMENT_H
 
+#include <iostream>
 #include <string>
+using namespace std;
 
 class Investment {
 public:
-    std::string type;
-    double amount;
-    int duration;
-    std::string risk;
-    double returnRate;
+  std::string type;
+  double amount;
+  int duration;
+  std::string risk;
+  double returnRate;
 
-    Investment(std::string t, double a, int d, std::string r, double rr);
-    double executeInvestment();
+  Investment(string t, double a, string r, double rr);
+  double executeInvestment();
 };
 
 #endif

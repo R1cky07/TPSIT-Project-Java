@@ -1,25 +1,30 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <vector>
-#include <string>
 #include "BankAccount.h"
 #include "Investment.h"
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
 
 class Client {
 private:
-    std::string name;
-    BankAccount account;
-    std::vector<Investment> portfolio;
+  std::string name;
+  BankAccount account;
+  std::vector<Investment> portfolio;
+  double nonBankFunds;
+  int monthsPassed;
 
 public:
-    Client(std::string n);
-    void depositMoney(double amount);
-    void withdrawMoney(double amount);
-    double getAccountBalance();
-    void displayPortfolio();
-    void addInvestment(Investment investment);
-    void advanceTime();
+  Client(string n);
+  void depositMoney(double amount);
+  void withdrawMoney(double amount);
+  double getAccountBalance();
+  void displayPortfolio();
+  void addInvestment(Investment investment);
+  void advanceTime();
+  double getNonBankFunds() const;
 };
 
 #endif
