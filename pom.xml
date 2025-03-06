@@ -10,7 +10,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <google-java-format.version>1.18.1</google-java-format.version>
     </properties>
 
     <dependencies>
@@ -31,7 +30,7 @@
             <plugin>
                 <groupId>com.google.googlejavaformat</groupId>
                 <artifactId>google-java-format-maven-plugin</artifactId>
-                <version>${google-java-format.version}</version>
+                <version>1.18.1</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
