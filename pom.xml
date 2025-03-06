@@ -3,17 +3,17 @@
   <groupId>com.itis.classe.studente</groupId>
   <artifactId>ITIS_Maven_Example</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
   <name>ITIS_Maven_Example</name>
-  <!-- FIXME change it to the project's website (otherwise delete) -->
   <url>http://www.example.com</url>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
+    <google-java-format.version>1.18.1</google-java-format.version>
   </properties>
-  
-    <dependencies>
+
+  <dependencies>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
@@ -25,5 +25,25 @@
       <version>2.24.1</version>
     </dependency>
   </dependencies>
-  
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.coveo</groupId>
+        <artifactId>fmt-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <style>GOOGLE</style>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
