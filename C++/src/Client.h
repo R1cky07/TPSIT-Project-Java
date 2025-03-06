@@ -10,9 +10,9 @@ using namespace std;
 
 class Client {
 private:
-  std::string name;
+  string name;
   BankAccount account;
-  std::vector<Investment> portfolio;
+  vector<Investment> portfolio;
   double nonBankFunds;
   int monthsPassed;
 

@@ -7,10 +7,10 @@ using namespace std;
 
 class Investment {
 public:
-  std::string type;
+  string type;
   double amount;
   int duration;
-  std::string risk;
+  string risk;
   double returnRate;
 
   Investment(string t, double a, string r, double rr);
