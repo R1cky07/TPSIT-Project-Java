@@ -30,7 +30,7 @@
             <plugin>
                 <groupId>com.google.googlejavaformat</groupId>
                 <artifactId>google-java-format-maven-plugin</artifactId>
-                <version>1.18.1</version>
+                <version>1.17.0</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
