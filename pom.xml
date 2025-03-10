@@ -1,4 +1,4 @@
-<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.itis.classe.studente</groupId>
     <artifactId>ITIS_Maven_Example</artifactId>
@@ -10,6 +10,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
+        <formatter.version>2.23.0</formatter.version>
+        <google-java-format.version>1.17.0</google-java-format.version>
     </properties>
 
     <dependencies>
@@ -28,17 +30,26 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.google.googlejavaformat</groupId>
-                <artifactId>google-java-format-maven-plugin</artifactId>
-                <version>1.17.0</version>
+                <groupId>com.coveo</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>${formatter.version}</version>
                 <executions>
                     <execution>
-                        <phase>validate</phase>
                         <goals>
                             <goal>format</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <style>google</style>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.googlejavaformat</groupId>
+                        <artifactId>google-java-format</artifactId>
+                        <version>${google-java-format.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
         <resources>
