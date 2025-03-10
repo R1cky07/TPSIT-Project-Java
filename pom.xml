@@ -1,15 +1,16 @@
-<project>
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.itis.classe.studente</groupId>
     <artifactId>ITIS_Maven_Example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>ITIS_Maven_Example</name>
+    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <formatter.version>2.23.0</formatter.version>
+        <formatter.version>2.13.0</formatter.version>
         <google-java-format.version>1.17.0</google-java-format.version>
     </properties>
 
@@ -64,4 +65,3 @@
             </resource>
         </resources>
     </build>
-</project>
