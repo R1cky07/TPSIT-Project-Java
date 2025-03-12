@@ -12,7 +12,7 @@ void BankAccount::updateBalance(double amount, bool isDeposit) {
 
 void BankAccount::deposit(double amount) {
   if (debt > 0) {
-    double debtRepayment = std::min(amount, debt);
+    double debtRepayment = min(amount, debt);
     debt -= debtRepayment;
     amount -= debtRepayment;
     if (debt == 0) {

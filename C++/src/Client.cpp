@@ -1,6 +1,6 @@
 #include "Client.h"
 
-Client::Client(string n) : name(n), nonBankFunds(0), monthsPassed(0) {}
+Client::Client(string n) : name(n), nonBankFunds(0) {}
 
 void Client::depositMoney(double amount) {
   if (amount > nonBankFunds) {
@@ -12,8 +12,18 @@ void Client::depositMoney(double amount) {
 }
 
 void Client::withdrawMoney(double amount) {
-  if (!account.withdraw(amount)) {
-    cout << "Insufficient balance." << endl;
+  if (account.getBalance() + nonBankFunds >= amount) {
+    double remainingAmount = amount;
+    if (account.getBalance() >= remainingAmount) {
+      account.withdraw(remainingAmount);
+      nonBankFunds += amount;
+    } else {
+      remainingAmount -= account.getBalance();
+      account.withdraw(account.getBalance());
+      nonBankFunds -= remainingAmount;
+    }
+  } else {
+    cout << "Insufficient balance\n";
   }
 }
 
@@ -41,7 +51,6 @@ void Client::addInvestment(Investment investment) {
 }
 
 void Client::advanceTime() {
-  monthsPassed++;
   nonBankFunds += 100;
   for (auto &investment : portfolio) {
     if (investment.duration > 0) {

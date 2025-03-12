@@ -14,7 +14,6 @@ private:
   BankAccount account;
   vector<Investment> portfolio;
   double nonBankFunds;
-  int monthsPassed;
 
 public:
   Client(string n);
