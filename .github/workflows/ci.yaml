@@ -53,7 +53,7 @@ jobs:
         run: rm -rf ~/.m2
 
       - name: Compile Java code
-        run: mvn clean compile -U
+        run: mvn compile -U
 
   build-windows:
     runs-on: windows-latest
@@ -85,7 +85,7 @@ jobs:
         run: curl -I https://repo.maven.apache.org/maven2/
 
       - name: Clean Maven cache
-        run: del /s /q %USERPROFILE%\.m2\repository
+        run: Remove-Item -Recurse -Force ~/.m2
 
       - name: Compile Java code
-        run: mvn clean compile -U
+        run: mvn compile
