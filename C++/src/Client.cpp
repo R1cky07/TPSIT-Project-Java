@@ -16,7 +16,7 @@ void Client::withdrawMoney(double amount) {
     double remainingAmount = amount;
     if (account.getBalance() >= remainingAmount) {
       account.withdraw(remainingAmount);
-      nonBankFunds += amount;
+      nonBankFunds += remainingAmount;
     } else {
       remainingAmount -= account.getBalance();
       account.withdraw(account.getBalance());

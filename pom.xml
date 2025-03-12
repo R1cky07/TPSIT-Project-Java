@@ -56,13 +56,6 @@
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
-            <resource>
-                <directory>src</directory>
-                <excludes>
-                    <exclude>**/*.cpp</exclude>
-                    <exclude>**/*.h</exclude>
-                </excludes>
-            </resource>
         </resources>
     </build>
 </project>
