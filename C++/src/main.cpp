@@ -23,17 +23,16 @@ int main() {
     cout << "Choice: ";
     cin >> choice;
 
+	double amount;
     cout << "\n";
     switch (choice) {
     case 1: {
-      double amount;
       cout << "How much money would you like to deposit? ";
       cin >> amount;
       client1.depositMoney(amount);
       break;
     }
     case 2: {
-      double amount;
       cout << "How much money would you like to withdraw? ";
       cin >> amount;
       client1.withdrawMoney(amount);
@@ -49,7 +48,7 @@ int main() {
     }
     case 5: {
       string investmentType, risk;
-      double amount, returnRate;
+	  double returnRate;
 
       cout << "Investment type (short/medium/long): ";
       cin >> investmentType;

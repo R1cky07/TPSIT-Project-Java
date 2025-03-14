@@ -14,6 +14,7 @@ private:
   BankAccount account;
   vector<Investment> portfolio;
   double nonBankFunds;
+  double checkIfNegative(double amount);
 
 public:
   Client(string n);

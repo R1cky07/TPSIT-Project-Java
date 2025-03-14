@@ -3,6 +3,7 @@
 Client::Client(string n) : name(n), nonBankFunds(0) {}
 
 void Client::depositMoney(double amount) {
+  amount = checkIfNegative(amount);
   if (amount > nonBankFunds) {
     cout << "Insufficient Balance";
     return;
@@ -12,16 +13,10 @@ void Client::depositMoney(double amount) {
 }
 
 void Client::withdrawMoney(double amount) {
-  if (account.getBalance() + nonBankFunds >= amount) {
-    double remainingAmount = amount;
-    if (account.getBalance() >= remainingAmount) {
-      account.withdraw(remainingAmount);
-      nonBankFunds += remainingAmount;
-    } else {
-      remainingAmount -= account.getBalance();
-      account.withdraw(account.getBalance());
-      nonBankFunds -= remainingAmount;
-    }
+  amount = checkIfNegative(amount);
+  if (account.getBalance() >= amount) {
+    account.withdraw(amount);
+    nonBankFunds += amount;
   } else {
     cout << "Insufficient balance\n";
   }
@@ -64,3 +59,11 @@ void Client::advanceTime() {
 }
 
 double Client::getNonBankFunds() const { return nonBankFunds; }
+
+double Client::checkIfNegative(double amount) {
+  if (amount < 0) {
+    return amount * -1;
+  } else {
+    return amount;
+  }
+}

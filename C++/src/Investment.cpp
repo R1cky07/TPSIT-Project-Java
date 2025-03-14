@@ -4,6 +4,9 @@
 
 Investment::Investment(string t, double a, string r, double rr) {
   type = t;
+  if(a < 0){
+	  a *= - 1;
+  }
   amount = a;
   risk = r;
   returnRate = rr;
