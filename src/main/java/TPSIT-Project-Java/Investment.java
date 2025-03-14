@@ -10,6 +10,9 @@ public class Investment implements Serializable {
 
   public Investment(String type, double amount, String risk, double returnRate) {
     this.type = type;
+    if (amount < 0) {
+      amount *= -1;
+    }
     this.amount = amount;
     this.risk = risk;
     this.returnRate = returnRate;

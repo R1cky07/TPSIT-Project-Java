@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataPersistence {
-  private static final String DATA_FILE = "users.dat";
+  private static final String DATA_FILE = "users.txt";
 
   public void saveUsers(Map<String, Client> users) {
     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))) {

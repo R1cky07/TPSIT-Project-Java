@@ -18,7 +18,7 @@ public class BankAccount implements Serializable {
   }
 
   public void deposit(double amount) {
-    if (debt > 0) {
+    if (debt == 1) {
       double debtRepayment = Math.min(amount, debt);
       debt -= debtRepayment;
       amount -= debtRepayment;

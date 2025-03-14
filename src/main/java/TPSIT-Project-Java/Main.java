@@ -13,7 +13,7 @@ public class Main {
       System.out.println("2. Register");
       System.out.println("3. Exit");
       System.out.print("Choice: ");
-      int choice = scanner.nextInt();
+      int choice = CheckValidFormat(scanner);
 
       if (choice == 1) {
         Client currentUser = userManager.authenticateUser(scanner);
@@ -56,14 +56,14 @@ public class Main {
       System.out.println("8. View transactions");
       System.out.println("9. Exit");
       System.out.print("Choice: ");
-      choice = scanner.nextInt();
+      choice = CheckValidFormat(scanner);
 
       System.out.println();
       switch (choice) {
         case 1:
           {
             System.out.print("How much money would you like to deposit? ");
-            double amount = scanner.nextDouble();
+            double amount = CheckValidFormat(scanner, 0);
             currentUser.depositMoney(amount);
             userManager.saveUsers(dataPersistence);
             break;
@@ -71,7 +71,7 @@ public class Main {
         case 2:
           {
             System.out.print("How much money would you like to withdraw? ");
-            double amount = scanner.nextDouble();
+            double amount = CheckValidFormat(scanner, 0);
             currentUser.withdrawMoney(amount);
             userManager.saveUsers(dataPersistence);
             break;
@@ -105,7 +105,7 @@ public class Main {
                 };
 
             System.out.print("Amount to invest: ");
-            double amount = scanner.nextDouble();
+            double amount = CheckValidFormat(scanner, 0);
             Investment newInvestment = new Investment(investmentType, amount, risk, returnRate);
             currentUser.addInvestment(newInvestment);
             userManager.saveUsers(dataPersistence);
@@ -141,5 +141,35 @@ public class Main {
       }
       System.out.println();
     } while (choice != 9);
+  }
+
+  private static int CheckValidFormat(Scanner scan) {
+    String formatString = scan.next();
+    boolean validInput = false;
+    while (!validInput) {
+      try {
+        int choice = Integer.parseInt(formatString);
+        validInput = true;
+      } catch (NumberFormatException e) {
+        System.out.print("\nInvalid choice format\nPlease reinsert: ");
+        formatString = scan.next();
+      }
+    }
+    return Integer.parseInt(formatString);
+  }
+
+  private static double CheckValidFormat(Scanner scan, double amount) {
+    String formatString = scan.next();
+    boolean validInput = false;
+    while (!validInput) {
+      try {
+        amount = Integer.parseInt(formatString);
+        validInput = true;
+      } catch (NumberFormatException e) {
+        System.out.print("\nInvalid choice format\nPlease reinsert: ");
+        formatString = scan.next();
+      }
+    }
+    return Double.parseDouble(formatString);
   }
 }

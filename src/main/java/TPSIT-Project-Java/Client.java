@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client implements Serializable {
-  private String username;
-  private String password;
+  private final String username;
+  private final String password;
   private final BankAccount account;
   private final List<Investment> portfolio;
   private double nonBankFunds;
@@ -26,11 +26,8 @@ public class Client implements Serializable {
     return password;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
   public void depositMoney(double amount) {
+    amount = convertMoneyIfNegative(amount);
     if (amount > nonBankFunds) {
       System.out.println("Insufficient Balance");
       return;
@@ -41,20 +38,14 @@ public class Client implements Serializable {
   }
 
   public void withdrawMoney(double amount) {
-    if (account.getBalance() + nonBankFunds >= amount) {
-      double remainingAmount = amount;
-      if (account.getBalance() >= remainingAmount) {
-        account.withdraw(remainingAmount);
-        nonBankFunds += remainingAmount;
-      } else {
-        remainingAmount -= account.getBalance();
-        account.withdraw(account.getBalance());
-        nonBankFunds -= remainingAmount;
-      }
+    amount = convertMoneyIfNegative(amount);
+    if (account.getBalance() >= amount) {
+      account.withdraw(amount);
+      nonBankFunds += amount;
+      transactions.add(new Transaction("Withdraw", amount));
     } else {
       System.out.println("Insufficient balance.");
     }
-    transactions.add(new Transaction("Withdraw", amount));
   }
 
   public double getAccountBalance() {
@@ -119,6 +110,14 @@ public class Client implements Serializable {
                 + "$, "
                 + transaction.getTimestamp());
       }
+    }
+  }
+
+  private double convertMoneyIfNegative(double amount) {
+    if (amount < 0) {
+      return amount * -1;
+    } else {
+      return amount;
     }
   }
 }
