@@ -7,7 +7,7 @@ public class Client implements Serializable {
   private final String password;
   private final BankAccount account;
   private final List<Investment> portfolio;
-  private double nonBankFunds;
+  double nonBankFunds;
   private final List<Transaction> transactions = new ArrayList<>();
 
   public Client(String username, String password) {
