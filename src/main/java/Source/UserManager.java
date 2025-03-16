@@ -1,5 +1,4 @@
-package com.tpsit.progettoJava;
-
+package Source;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;

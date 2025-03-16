@@ -1,5 +1,4 @@
-package com.tpsit.progettoJava;
-
+package Source;
 import java.util.Scanner;
 
 public class Main {
