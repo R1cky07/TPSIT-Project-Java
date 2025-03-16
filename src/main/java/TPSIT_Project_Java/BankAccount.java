@@ -1,3 +1,4 @@
+package TPSIT_Project_Java.TPSIT_Project_Java;
 import java.io.Serializable;
 
 public class BankAccount implements Serializable {

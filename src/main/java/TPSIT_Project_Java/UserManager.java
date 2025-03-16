@@ -1,3 +1,4 @@
+package TPSIT_Project_Java.TPSIT_Project_Java;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
