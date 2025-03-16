@@ -1,4 +1,4 @@
-package TPSIT_Project_Java.TPSIT_Project_Java;
+package com.tpsit.progettoJava;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

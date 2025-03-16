@@ -1,4 +1,4 @@
-package TPSIT_Project_Java.TPSIT_Project_Java;
+package com.tpsit.progettoJava;
 
 import java.io.Serializable;
 import java.util.ArrayList;
